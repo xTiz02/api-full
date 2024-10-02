@@ -1,0 +1,121 @@
+use marvelDB;
+
+db.role.insertMany(
+    [{
+        name: "CUSTOMER",
+        permissions: [
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cf9e"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cf9f"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cfa0"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cfa1"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cfa2"),
+                $db: "marvelDB"
+            }]
+    },
+    {
+        name: "AUDITOR",
+        permissions: [
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cf9e"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cf9f"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cfa0"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cfa1"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cfa2"),
+                $db: "marvelDB"
+            },
+            {
+                $ref: "permission",
+                $id: ObjectId("665d3276d4f03406c7b3cfa3"),
+                $db: "marvelDB"
+            }
+        ]
+    }]
+    );
+db.role.find();
+db.permission.insertMany(
+    [{
+        "name": "character:read-all"
+    },
+    {
+        "name": "character:read-detail"
+    },
+    {
+        "name": "comic:read-all"
+    },
+    {
+        "name": "user-interaction:read-my-interactions"
+    },
+    {
+        "name": "user-interaction:read-all"
+    },
+    {
+        "name": "user-interaction:read-by-username"
+    }]
+    );
+
+db.user.insertMany(
+    [{
+        username: "admin",
+        password: "admin",
+        role:{
+            $ref: "role",
+            $id: ObjectId("665d3351d4f03406c7b3cfab"),
+            $db: "marvelDB"
+        },
+        account_expired: false,
+        account_locked: false,
+        credentials_expired: false,
+        enabled: true
+    },
+    {
+        username: "customer",
+        password: "customer",
+        role: {
+            $ref: "role",
+            $id: ObjectId("665d3351d4f03406c7b3cfac"),
+            $db: "marvelDB"
+        },
+        account_expired: false,
+        account_locked: false,
+        credentials_expired: false,
+        enabled: true
+    }]
+    );
+
+
+db.user.find();
